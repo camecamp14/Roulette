@@ -1,2 +1,2 @@
-# inventrory-management
+# Roulette
 Java Project
