@@ -53,6 +53,27 @@ public class Stats {
 		var = (exp_value*exp_value)-exp_value_sqrd;
 		return (Math.sqrt(var))
 	}
+	/*
+	Integrates using left handed rectangle method. Creates an array of x values spanning from the lower bound to upper bound.
+	This array is passed to the normal_pdf function to create an array of y values. The double result has the value of each
+	rectangle added to it, also allowing for negative values.
+	*/
+	
+	public static double integrate(double lower, double upper,double inc) {
+		double result=0;
+		int len_x = (int) ((upper-lower)/inc);
+		double[] x = new double[len_x];
+		for(int i=0;i<len_x;i++) {
+			x[i] = lower + (inc*i);
+		}
+		double [] func; // = function taking x as parameter
+		
+		for(int i=0;i<len_x;i++) {
+			result += x[i]*inc;
+		}
+		
+		return result;
+	}
 	
 	
 }
