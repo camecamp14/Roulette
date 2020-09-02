@@ -59,20 +59,33 @@ public class Stats {
 	rectangle added to it, also allowing for negative values.
 	*/
 	
-	public static double integrate(double lower, double upper,double inc) {
+	public static double integrate(double lower, double upper, double inc, double mu, double sigma) {
 		double result=0;
 		int len_x = (int) ((upper-lower)/inc);
 		double[] x = new double[len_x];
 		for(int i=0;i<len_x;i++) {
 			x[i] = lower + (inc*i);
 		}
-		double [] func; // = function taking x as parameter
+		double [] func = normal_pdf(x,mu,sigma);
 		
 		for(int i=0;i<len_x;i++) {
 			result += x[i]*inc;
 		}
 		
 		return result;
+	}
+	/*
+	Coverts x array into the normal pdf for integration.
+	*/
+	public static double[] normal_pdf(double[] x, double mu,double sigma) {
+		double[] y = new double[x.length];
+		for(int i=0;i<y.length;i++) {
+			y[i]=(1/(sigma*Math.sqrt(2*Math.PI)))*
+					Math.exp(-0.5*(((x[i]-mu)/sigma)*(x[i]-mu)/sigma)) ;
+		}
+		return y;
+		
+		
 	}
 	
 	
