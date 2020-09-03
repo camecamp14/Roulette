@@ -37,7 +37,6 @@ public class Stats {
 		exp_value_sqrd = prob*(start*mult)*(start*mult);
 		double exp_value = expected_value(bet, wager, mult, payout, start);
 		var = exp_value_sqrd-(exp_value*exp_value);
-		System.out.println(exp_value_sqrd);
 		return (Math.sqrt(var));
 	}
 	
